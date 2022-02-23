@@ -1,5 +1,6 @@
 import React,{useState, useEffect, useRef} from 'react';
 import * as esbuild from 'esbuild-wasm';
+import { unpkgPathPlugin } from '../plugins/unpkg-path-plugin';
 
 
 const CodeInput:React.FC=()=>{
@@ -24,13 +25,20 @@ const CodeInput:React.FC=()=>{
       if(!ref.current){
           return;
       }
-      const result= await ref.current.transform(input,
-            {
-                loader:'jsx',
-                target:'es2015'
-            }
-        );
-        setCode(result.code)
+      const result=await ref.current.build({
+          entryPoints:['index.js'],
+          bundle:true,
+          write:false,
+          plugins:[unpkgPathPlugin()],
+          //this is to remove the process.env.node_env warning from the browser
+          define:{
+              'process.env.NODE_ENV':'"production"',
+              global:'window'
+          }
+      })
+      console.log(result);
+      
+        setCode(result.outputFiles[0].text)
       
     }
 
