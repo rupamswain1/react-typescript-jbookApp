@@ -1,22 +1,34 @@
 import * as esbuild from 'esbuild-wasm';
-import axios from 'axios';
- 
+
+// (async ()=>{
+//   await fileCache.setItem('color','red');
+//   const color=await fileCache.getItem('color');
+
+//   console.log(color);
+  
+// })()
+
 export const unpkgPathPlugin = () => {
   return {
     name: 'unpkg-path-plugin',
     setup(build: esbuild.PluginBuild) {
+      //Handle the root directory
+      build.onResolve({filter:/(^index\.js$)/},()=>{
+        return { path:'index.js', namespace: 'a' };
+      })
+      //Handle relative paths in the module
+      build.onResolve({filter:/^\.+\//},(args:any)=>{
+          return{
+            namespace:'a',
+            path:new URL(args.path,'https://unpkg.com'+args.resolveDir+'/').href
+            //path:new URL(args.path,args.importer+'/').href
+        }
+      })
+
+      //Handle main file of the module
+
       build.onResolve({ filter: /.*/ }, async (args: any) => {
         console.log('onResolve', args);
-        if(args.path==='index.js'){
-            return { path: args.path, namespace: 'a' };
-        }
-        if(args.path.includes('./')|| args.path.includes('../')){
-            return{
-                namespace:'a',
-                path:new URL(args.path,'https://unpkg.com'+args.resolveDir+'/').href
-                //path:new URL(args.path,args.importer+'/').href
-            }
-        }
         return{
             path:`https://unpkg.com/${args.path}`,
             namespace:'a'
@@ -26,28 +38,7 @@ export const unpkgPathPlugin = () => {
         // }
       });
  
-      build.onLoad({ filter: /.*/ }, async (args: any) => {
-        console.log('onLoad', args);
- 
-        if (args.path === 'index.js') {
-          return {
-            loader: 'jsx',
-            contents: `
-              const message=require('react');
-              console.log(message);
-            `,
-          };
-        }
-        const {data,request}=await axios.get(args.path);
-        console.log(new URL('./',request.responseURL).pathname);
-        
-        return{
-            loader:'jsx',
-            contents:data,
-            resolveDir:new URL('./',request.responseURL).pathname
-        }
 
-      });
     },
   };
 };

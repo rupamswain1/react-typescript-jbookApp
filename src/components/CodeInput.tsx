@@ -1,7 +1,7 @@
 import React,{useState, useEffect, useRef} from 'react';
 import * as esbuild from 'esbuild-wasm';
 import { unpkgPathPlugin } from '../plugins/unpkg-path-plugin';
-
+import { FetchPlugin } from '../plugins/fetch-plugin';
 
 const CodeInput:React.FC=()=>{
 
@@ -17,7 +17,7 @@ const CodeInput:React.FC=()=>{
     const startService=async()=>{
         ref.current=await esbuild.startService({
             worker:true,
-            wasmURL:'/esbuild.wasm'
+            wasmURL:'https://unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm'
         });
     };
 
@@ -29,7 +29,9 @@ const CodeInput:React.FC=()=>{
           entryPoints:['index.js'],
           bundle:true,
           write:false,
-          plugins:[unpkgPathPlugin()],
+          plugins:[unpkgPathPlugin(),
+            FetchPlugin(input)
+        ],
           //this is to remove the process.env.node_env warning from the browser
           define:{
               'process.env.NODE_ENV':'"production"',
