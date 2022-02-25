@@ -2,7 +2,7 @@ import React,{useState, useEffect, useRef} from 'react';
 import * as esbuild from 'esbuild-wasm';
 import { unpkgPathPlugin } from '../plugins/unpkg-path-plugin';
 import { FetchPlugin } from '../plugins/fetch-plugin';
-
+import CodeOutput from './CodeOutput';
 const CodeInput:React.FC=()=>{
 
     const ref=useRef<any>();
@@ -57,6 +57,7 @@ const CodeInput:React.FC=()=>{
             <pre>
                 {code}
             </pre>
+            <CodeOutput code={code}/>
         </div>
     )
 }
