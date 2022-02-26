@@ -6,7 +6,7 @@ import CodeOutput from './CodeOutput';
 const CodeInput:React.FC=()=>{
 
     const ref=useRef<any>();
-
+    const iframe=useRef<any>();
     const [input, setInput]=useState<string>('');
     const [code,setCode]=useState<string>('');
 
@@ -39,8 +39,8 @@ const CodeInput:React.FC=()=>{
           }
       })
       console.log(result);
-      
-        setCode(result.outputFiles[0].text)
+      iframe.current.contentWindow.postMessage(result.outputFiles[0].text,'*');
+        //setCode(result.outputFiles[0].text)
       
     }
 
@@ -57,7 +57,7 @@ const CodeInput:React.FC=()=>{
             <pre>
                 {code}
             </pre>
-            <CodeOutput code={code}/>
+            <CodeOutput iframe={iframe}/>
         </div>
     )
 }
