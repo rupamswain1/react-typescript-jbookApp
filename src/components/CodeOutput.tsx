@@ -26,20 +26,9 @@ const CodeOutput:React.FC<outputProps>=({iframe})=>{
     `
     return(
         <div>
-            <iframe sandbox="allow-scripts" srcDoc={html} ref={iframe}></iframe>
+            <iframe title="preview" sandbox="allow-scripts" srcDoc={html} ref={iframe}></iframe>
         </div>
     )
 }
 
 export default CodeOutput
-
-// console.log(event.data)
-//                         try{
-//                             eval(event.data)
-//                             console.log('data is evaluated')
-//                         }
-//                         catch(err){
-//                             console.log('error catched')
-//                             const root=document.querrySelector('#root');
-//                             root.innerHTML=(<div style="color:red;"><h4>Run time error</h4></div>)
-//                         }

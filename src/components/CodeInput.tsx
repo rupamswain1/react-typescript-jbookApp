@@ -8,7 +8,7 @@ const CodeInput:React.FC=()=>{
     const ref=useRef<any>();
     const iframe=useRef<any>();
     const [input, setInput]=useState<string>('');
-    const [code,setCode]=useState<string>('');
+    
 
     useEffect(()=>{
         startService();
@@ -52,11 +52,8 @@ const CodeInput:React.FC=()=>{
                 onChange={(e)=>setInput(e.target.value)}
             ></textarea>
             <div>
-                <button onClick={onClick}>Submit</button>
+                {<button onClick={onClick}>Submit</button>}
             </div>
-            <pre>
-                {code}
-            </pre>
             <CodeOutput iframe={iframe}/>
         </div>
     )
