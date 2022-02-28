@@ -3,6 +3,7 @@ import * as esbuild from 'esbuild-wasm';
 import { unpkgPathPlugin } from '../plugins/unpkg-path-plugin';
 import { FetchPlugin } from '../plugins/fetch-plugin';
 import CodeOutput from './CodeOutput';
+import CodeEditor from './Code-Editor';
 const CodeInput:React.FC=()=>{
 
     const ref=useRef<any>();
@@ -46,6 +47,7 @@ const CodeInput:React.FC=()=>{
 
     return(
         <div>
+             <CodeEditor initialValue='const h=hello' onChange={setInput}/>
             <textarea
                 placeholder='Enter code here'
                 value={input}
