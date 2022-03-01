@@ -1,13 +1,10 @@
-import React from 'react';
-import CodeInput from './components/CodeInput';
-
-
+import React,{useState} from 'react';
+import CodeCell from './components/CodeCell';
 function App() {
+ 
   return (
     <div className="App">
-     
-      <CodeInput/>
-     
+     <CodeCell/>
     </div>
   );
 }
