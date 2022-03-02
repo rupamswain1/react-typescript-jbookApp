@@ -1,5 +1,5 @@
-import React,{useState} from 'react';
-import CodeCell from './components/CodeCell';
+import React from 'react';
+import CodeCell from './components/codeCell/CodeCell';
 function App() {
  
   return (

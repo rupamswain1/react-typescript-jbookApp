@@ -65,12 +65,12 @@ const CodeEditor:React.FC<CodeEditorProps>=({initialValue,setCode})=>{
     }
     return(
         <div className='codeEditor'>
-         <button onClick={onClick}>Submit</button>
+         {/* {<button onClick={onClick}>Submit</button>} */}
         <button onClick={formatCode} className="codeEditor__button">Format</button>
         <MonacoEditor
                     editorDidMount={onEditorDidMount}
                     value={initialValue}
-                    height="200rem" 
+                    height="100%" 
                     theme='dark' 
                     language="javascript"
                     options={{wordWrap:'on',

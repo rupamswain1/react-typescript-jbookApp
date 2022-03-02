@@ -1,5 +1,6 @@
 import React,{useRef,useEffect} from "react";
 
+import './codeOutput.style.scss'
 interface outputProps{
     code:string;
 }
@@ -36,7 +37,7 @@ const CodeOutput:React.FC<outputProps>=({code})=>{
     
   
     return(
-        <div>
+        <div className="codeOutput-container">
              <iframe
       title="preview"
       ref={iframe}
