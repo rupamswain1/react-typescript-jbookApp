@@ -8,12 +8,14 @@ import './codeCell.style.scss';
 function CodeCell() {
  
   const [code,setCode]=useState<string>('');
-  
+  const [err,setErr]=useState<any>('');
   return (
     <Resizable direction='vertical'>    
       <div className="codeCell-container">
-        <CodeEditor initialValue='const h="hello"; console.log(h)' setCode={setCode}/>
-        <CodeOutput code={code}/>
+        <Resizable direction='horizontal'>
+          <CodeEditor initialValue='const h="hello"; console.log(h)' setCode={setCode} setErr={setErr}/>
+        </Resizable>
+        <CodeOutput code={code} err={err}/>
       </div>
     </Resizable>
 

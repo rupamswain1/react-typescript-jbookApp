@@ -12,7 +12,7 @@ export const FetchPlugin=(inputCode:string)=>{
         setup(build:esbuild.PluginBuild){
 
         build.onLoad({filter:/(^index\.js$)/},(args:any)=>{
-            console.log('onLoad-index', args);
+            //console.log('onLoad-index', args);
             return {
                 loader: 'jsx',
                 contents:inputCode,
@@ -27,7 +27,7 @@ export const FetchPlugin=(inputCode:string)=>{
         });
 
         build.onLoad({filter:/.css$/},async(args:any)=>{
-            console.log('onLoad-css', args);
+            //console.log('onLoad-css', args);
            
             const {data,request}=await axios.get(args.path);
             const escaped=data.replace(/\n/g,'')

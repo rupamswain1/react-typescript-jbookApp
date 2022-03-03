@@ -1,3 +1,26 @@
 .codeOutput-container{
-    height: 50%;
+    height: 100%;
+    position: relative;
+    flex-grow: 1;
+}
+.iframe{
+    height:calc(100% - 5px);
+    
+    width:100%;
+}
+.react-draggable-transparent-selection .codeOutput-container:after{
+    content:"";
+    background-color: orange;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    right:0;
+    left:0;
+    opacity:0;
+}
+.code-error{
+    color:red;
+    position: absolute;
+    top:0;
+    padding: 1rem;
 }

@@ -1,4 +1,4 @@
-import { useRef,useState } from "react";
+import { useRef,useState, useEffect } from "react";
 
 import MonacoEditor,{EditorDidMount} from "@monaco-editor/react";
 import prettier from 'prettier';
@@ -13,19 +13,28 @@ import './codeEditor.style.scss';
 interface CodeEditorProps{
     initialValue:string;
     setCode(value:string):void;
+    setErr(value:any):void;
 }
 
 
 
-const CodeEditor:React.FC<CodeEditorProps>=({initialValue,setCode})=>{
+const CodeEditor:React.FC<CodeEditorProps>=({initialValue,setCode,setErr})=>{
     const editorRef=useRef<any>();
 
     const [input, setInput]=useState<string>('');
-    const onClick=async ()=>{
-         const output=await bundler(input)
-         setCode(output);
-         
-      }
+    
+
+    useEffect(()=>{
+        const bundleTimer=setTimeout(async()=>{
+            const output=await bundler(input)
+            setCode(output.code);
+            setErr(output.error);
+        },1000);
+
+        return(()=>{
+            clearTimeout(bundleTimer)
+        })
+    },[input])
 
     const onEditorDidMount:EditorDidMount=(getValue, monacoEditor)=>{
         editorRef.current=monacoEditor;
