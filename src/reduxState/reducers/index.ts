@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux';
 import CellReducer from './cellReducer';
 
+
 const reducers=combineReducers(({
     cells:CellReducer
 }))
