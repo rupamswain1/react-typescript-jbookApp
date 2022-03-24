@@ -38,7 +38,7 @@ const MarkDownEditor: React.FC<MarkDownEditorProps> = ({
   }, []);
 
   return (
-    <div>
+    <div className="markdown-container">
       <ActionBar id={id} />
       {enableEditor ? (
         <div ref={mdEditorRef} className="text-editor">

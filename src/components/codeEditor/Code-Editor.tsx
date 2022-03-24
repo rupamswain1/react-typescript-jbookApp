@@ -5,7 +5,6 @@ import prettier from 'prettier';
 import parser from 'prettier/parser-babel';
 import codeShift from 'jscodeshift';
 import Highlighter from 'monaco-jsx-highlighter';
-import ActionBar from '../actionbar/ActionBar';
 
 import { useActions } from '../../hooks/use-actions';
 
@@ -79,7 +78,6 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   };
   return (
     <div className="codeEditor">
-      <ActionBar id={id} />
       {/* {<button onClick={onClick}>Submit</button>} */}
       <button onClick={formatCode} className="codeEditor__button">
         Format

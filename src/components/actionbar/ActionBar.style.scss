@@ -3,9 +3,16 @@
     border:1px solid white;
     outline: none;
     transition: all 0.3s;
+    
     &:hover{
         background-color: #1e87e3;
         color: orange;
         outline:none;
     }
+}
+
+.actionBar-container{
+    background-color: rgb(43, 46, 56);
+    display: flex;
+    justify-content: flex-end;
 }
