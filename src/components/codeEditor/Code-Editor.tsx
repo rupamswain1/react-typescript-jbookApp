@@ -27,6 +27,10 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   cell: { id, content },
 }) => {
   const editorRef = useRef<any>();
+  // console.log(initialValue);
+  // console.log(setCode);
+  // console.log(id);
+  // console.log(content);
 
   const { updateCell } = useActions();
   useEffect(() => {
@@ -43,7 +47,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
 
   const onEditorDidMount: EditorDidMount = (getValue, monacoEditor) => {
     editorRef.current = monacoEditor;
-    updateCell(id, getValue());
+
     monacoEditor.onDidChangeModelContent(() => {
       updateCell(id, getValue());
     });
@@ -84,7 +88,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
       </button>
       <MonacoEditor
         editorDidMount={onEditorDidMount}
-        value={initialValue}
+        value={content ? content : initialValue}
         height="100%"
         theme="dark"
         language="javascript"

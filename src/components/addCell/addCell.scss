@@ -1,0 +1,31 @@
+.btn{
+    border-radius: 10%;
+    font-size: 1rem;
+    padding: 5px;
+    outline: none;
+    border: none;
+    margin: 1px;
+    font-weight: bold;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.code-btn{
+    color: white;
+    background-color: #2276d6;
+    margin-right: 15px;
+}
+
+.text-btn{
+    color: white;
+    background-color: #e78b3a;
+}
+.addCell-container{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(85, 83, 83);
+}
+.addCell-container:not(:first-of-type){
+    margin-top: 10px;
+}
