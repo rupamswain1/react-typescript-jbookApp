@@ -8,18 +8,18 @@ interface addCellProps {
 }
 
 const AddCell: React.FC<addCellProps> = ({ nextCellId }) => {
-  const { insertCellBefore } = useActions();
+  const { insertCellAfter } = useActions();
   return (
     <div className="addCell-container">
       <button
         className="btn code-btn"
-        onClick={() => insertCellBefore(nextCellId, 'code')}
+        onClick={() => insertCellAfter(nextCellId, 'code')}
       >
         + Code
       </button>
       <button
         className="btn text-btn"
-        onClick={() => insertCellBefore(nextCellId, 'text')}
+        onClick={() => insertCellAfter(nextCellId, 'text')}
       >
         + Text
       </button>

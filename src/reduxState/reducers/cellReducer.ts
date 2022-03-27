@@ -44,7 +44,7 @@ const CellReducer = produce(
         state.order[targetIndex] = action.payload.id
         return state
 
-      case ActionType.INSERT_CELL_BEFORE:
+      case ActionType.INSERT_CELL_AFTER:
         const newCell: Cell = {
           content: '',
           type: action.payload.type,
@@ -55,9 +55,9 @@ const CellReducer = produce(
           (id) => id === action.payload.id,
         )
         if (insertIndex < 0) {
-          state.order.push(newCell.id)
+          state.order.unshift(newCell.id)
         } else {
-          state.order.splice(insertIndex, 0, newCell.id)
+          state.order.splice(insertIndex + 1, 0, newCell.id)
         }
         return state
 
