@@ -15,15 +15,11 @@ import { Cell } from '../../reduxState';
 
 interface CodeEditorProps {
   initialValue: string;
-  setCode(value: string): void;
-  setErr(value: any): void;
   cell: Cell;
 }
 
 const CodeEditor: React.FC<CodeEditorProps> = ({
   initialValue,
-  setCode,
-  setErr,
   cell: { id, content },
 }) => {
   const editorRef = useRef<any>();
@@ -32,12 +28,11 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   // console.log(id);
   // console.log(content);
 
-  const { updateCell } = useActions();
+  const { updateCell,createBundle } = useActions();
   useEffect(() => {
     const bundleTimer = setTimeout(async () => {
-      const output = await bundler(content);
-      setCode(output.code);
-      setErr(output.error);
+      createBundle(id,content)
+      
     }, 1000);
 
     return () => {

@@ -5,6 +5,8 @@ import CodeEditor from '../codeEditor/Code-Editor';
 import CodeOutput from '../codeOutput/CodeOutput';
 import Resizable from '../resizable/Resizable';
 
+import { useTypedSelector } from '../../hooks/use-typed-selector';
+
 import './codeCell.style.scss';
 
 interface CodeCellProps {
@@ -12,8 +14,8 @@ interface CodeCellProps {
 }
 
 const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
-  const [code, setCode] = useState<string>('');
-  const [err, setErr] = useState<any>('');
+  const bundle=useTypedSelector((state)=>state.bundle[cell.id])
+    console.log(bundle)
   return (
     <>
       <ActionBar id={cell.id} />
@@ -22,12 +24,10 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
           <Resizable direction="horizontal">
             <CodeEditor
               initialValue='const h="hello"; console.log(h)'
-              setCode={setCode}
-              setErr={setErr}
               cell={cell}
             />
           </Resizable>
-          <CodeOutput code={code} err={err} />
+          {bundle && <CodeOutput code={bundle.code} err={bundle.err}/>}
         </div>
       </Resizable>
     </>

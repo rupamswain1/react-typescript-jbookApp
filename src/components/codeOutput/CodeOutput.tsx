@@ -1,9 +1,9 @@
 import React,{useRef,useEffect} from "react";
-
+import { useTypedSelector } from '../../hooks/use-typed-selector';
 import './codeOutput.style.scss'
 interface outputProps{
-    code:string;
-    err:string;
+    code:string,
+    err:any
 }
 const html = `
     <html>
@@ -33,18 +33,20 @@ const html = `
     </html>
   `;
 const CodeOutput:React.FC<outputProps>=({code,err})=>{
-
+   
     const iframe=useRef<any>();
     useEffect(() => {
         iframe.current.srcdoc = html;
         setTimeout(()=>{
+          
           iframe.current.contentWindow.postMessage(code, '*');
         },100)
         
       }, [code]);
-     
+     console.log(code)
       return(
-        <div className="codeOutput-container">
+        <>
+        {<div className="codeOutput-container">
           <iframe
             title="preview"
             ref={iframe}
@@ -53,7 +55,8 @@ const CodeOutput:React.FC<outputProps>=({code,err})=>{
             className="iframe"
           />
           {err && <div className="code-error">{err}</div>}          
-        </div>
+        </div>}
+        </>
     )
 }
 
