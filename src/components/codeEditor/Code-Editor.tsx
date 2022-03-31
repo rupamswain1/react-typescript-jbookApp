@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 import MonacoEditor, { EditorDidMount } from '@monaco-editor/react';
 import prettier from 'prettier';
@@ -8,7 +8,6 @@ import Highlighter from 'monaco-jsx-highlighter';
 
 import { useActions } from '../../hooks/use-actions';
 
-import bundler from '../../bundler';
 
 import './codeEditor.style.scss';
 import { Cell } from '../../reduxState';
@@ -23,22 +22,18 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   cell: { id, content },
 }) => {
   const editorRef = useRef<any>();
-  // console.log(initialValue);
-  // console.log(setCode);
-  // console.log(id);
-  // console.log(content);
 
   const { updateCell,createBundle } = useActions();
   useEffect(() => {
+
     const bundleTimer = setTimeout(async () => {
       createBundle(id,content)
-      
-    }, 1000);
+    }, 750);
 
     return () => {
       clearTimeout(bundleTimer);
     };
-  }, [content]);
+  }, [content,id,createBundle]);
 
   const onEditorDidMount: EditorDidMount = (getValue, monacoEditor) => {
     editorRef.current = monacoEditor;

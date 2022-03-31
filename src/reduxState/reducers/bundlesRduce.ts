@@ -1,5 +1,4 @@
 import produce from 'immer'
-import { isArrowFunction } from 'typescript'
 import { ActionType } from '../action-types'
 import { Action } from '../actions'
 
@@ -25,7 +24,6 @@ export const bundleReducer = produce(
           err: '',
         }
         return state
-        break
       case ActionType.BUNDLE_COMPLETE:
         state[action.payload.cellId] = {
           loading: false,
@@ -33,7 +31,6 @@ export const bundleReducer = produce(
           err: action.payload.bundle.error,
         }
         return state
-        break
       default:
         return state
     }

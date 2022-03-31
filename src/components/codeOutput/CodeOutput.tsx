@@ -1,5 +1,5 @@
 import React,{useRef,useEffect} from "react";
-import { useTypedSelector } from '../../hooks/use-typed-selector';
+
 import './codeOutput.style.scss'
 interface outputProps{
     code:string,
@@ -43,7 +43,7 @@ const CodeOutput:React.FC<outputProps>=({code,err})=>{
         },100)
         
       }, [code]);
-     console.log(code)
+     
       return(
         <>
         {<div className="codeOutput-container">

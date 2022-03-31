@@ -11,7 +11,7 @@ import {
   BundleStartAction,
 } from '../actions'
 import { CellType } from '../cell'
-import { wait } from '@testing-library/user-event/dist/utils'
+
 import bundle from '../../bundler'
 
 export const updateCell = (id: string, content: string): UpdateCellAction => {
