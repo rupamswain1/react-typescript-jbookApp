@@ -7,7 +7,7 @@ import codeShift from 'jscodeshift';
 import Highlighter from 'monaco-jsx-highlighter';
 
 import { useActions } from '../../hooks/use-actions';
-
+import { useTypedSelector } from '../../hooks/use-typed-selector';
 
 import './codeEditor.style.scss';
 import { Cell } from '../../reduxState';
@@ -22,18 +22,40 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   cell: { id, content },
 }) => {
   const editorRef = useRef<any>();
-
+  const cumilativeCell=useTypedSelector((state)=>{
+   
+    const {data,order}=state.cells;
+    const orderedCell=order.map((id)=>data[id]);
+   
+    const cumilativeCell=[
+      `
+        const show=(value)=>{
+          return document.querySelector("#root").innerHTML=value
+        }
+      `
+    ];
+    for(let c of orderedCell){
+      if(c.type==='code'){
+        cumilativeCell.push(c.content)
+      }
+      if(c.id===id){
+        break;
+      }
+    }
+    return cumilativeCell;
+  })
+  
   const { updateCell,createBundle } = useActions();
   useEffect(() => {
 
     const bundleTimer = setTimeout(async () => {
-      createBundle(id,content)
+      createBundle(id,cumilativeCell.join('\n'))
     }, 750);
 
     return () => {
       clearTimeout(bundleTimer);
     };
-  }, [content,id,createBundle]);
+  }, [cumilativeCell.join('\n'),id,createBundle]);
 
   const onEditorDidMount: EditorDidMount = (getValue, monacoEditor) => {
     editorRef.current = monacoEditor;

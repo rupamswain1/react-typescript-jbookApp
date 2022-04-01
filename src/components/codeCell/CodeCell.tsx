@@ -15,23 +15,7 @@ interface CodeCellProps {
 
 const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
   const bundle=useTypedSelector((state)=>state.bundle[cell.id])
-  const cumilativeCell=useTypedSelector((state)=>{
-    //console.log(state)
-    const {data,order}=state.cells;
-    const orderedCell=order.map((id)=>data[id]);
-   // console.log(orderedCell)
-    const cumilativeCell=[];
-    for(let c of orderedCell){
-      if(c.type==='code'){
-        cumilativeCell.push(c.content)
-      }
-      if(c.id===cell.id){
-        break;
-      }
-    }
-    return cumilativeCell;
-  })
-  console.log(cumilativeCell)
+  
   return (
     <>
       <ActionBar id={cell.id} />
