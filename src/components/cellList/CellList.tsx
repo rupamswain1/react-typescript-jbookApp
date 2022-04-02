@@ -3,6 +3,8 @@ import { useTypedSelector } from '../../hooks/use-typed-selector';
 import CellListItems from '../cellListItems/CellListItems';
 import AddCell from '../addCell/AddCell';
 
+import './cell-list.scss'
+
 const CellList: React.FC = () => {
   const cells = useTypedSelector(({ cells: { data, order } }) => {
     return order.map((id) => {

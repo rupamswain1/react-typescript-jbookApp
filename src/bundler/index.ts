@@ -21,15 +21,19 @@ const bundle = async (rawCode: string) => {
         'process.env.NODE_ENV': '"production"',
         global: 'window',
       },
+      jsxFactory: '_React.createElement',
+      jsxFragment: '_React.Fragment',
     })
+
     return {
       code: result.outputFiles[0].text,
       error: '',
     }
-  } catch (err:any) {
+  } catch (err) {
+    const e = err as Error
     return {
       code: '',
-      error: err.message,
+      error: e.message,
     }
   }
 }
