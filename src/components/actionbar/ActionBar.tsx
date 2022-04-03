@@ -18,7 +18,7 @@ const ActionBar: React.FC<ActionBarProps> = ({ id }) => {
         className="actionbutton is-primary is-small"
       >
         <span className="icon">
-          <i className="fas fa-arrow-up" />
+          <img src="assets/arrow-up.svg" alt="up"/>
         </span>
       </button>
       <button
@@ -28,7 +28,7 @@ const ActionBar: React.FC<ActionBarProps> = ({ id }) => {
         className="actionbutton is-primary is-small"
       >
         <span className="icon">
-          <i className="fas fa-arrow-down" />
+        <img src="assets/arrow-down.svg" alt="down"/>
         </span>
       </button>
       <button
@@ -38,7 +38,7 @@ const ActionBar: React.FC<ActionBarProps> = ({ id }) => {
         className="actionbutton is-primary is-small"
       >
         <span className="icon">
-          <i className="fas fa-times" />
+          <img src="assets/x.svg" alt="close"/>
         </span>
       </button>
     </div>
