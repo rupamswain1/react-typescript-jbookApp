@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-typescript-jbookapp"]=this["webpackJsonpreact-typescript-jbookapp"]||[]).push([[463],{633:function(t,a){!function(t){var a=t.util.clone(t.languages.typescript);t.languages.tsx=t.languages.extend("jsx",a);var e=t.languages.tsx.tag;e.pattern=RegExp("(^|[^\\w$]|(?=</))(?:"+e.pattern.source+")",e.pattern.flags),e.lookbehind=!0}(Prism)}}]);
+//# sourceMappingURL=463.dfe492e6.chunk.js.map

@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-typescript-jbookapp"]=this["webpackJsonpreact-typescript-jbookapp"]||[]).push([[505],{675:function(a,e){!function(a){function e(e,t){a.languages[e]&&a.languages.insertBefore(e,"comment",{"doc-comment":t})}var t=a.languages.markup.tag,n={pattern:/\/\/\/.*/,greedy:!0,alias:"comment",inside:{tag:t}},p={pattern:/'''.*/,greedy:!0,alias:"comment",inside:{tag:t}};e("csharp",n),e("fsharp",n),e("vbnet",p)}(Prism)}}]);
+//# sourceMappingURL=505.31c0d52a.chunk.js.map
