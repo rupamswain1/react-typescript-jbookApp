@@ -8,10 +8,12 @@ const express_1 = __importDefault(require("express"));
 const http_proxy_middleware_1 = require("http-proxy-middleware");
 const serve = (port, filename, dir) => {
     const app = (0, express_1.default)();
-    app.use((0, http_proxy_middleware_1.createProxyMiddleware)('/', {
-        target: 'http://localhost:3000',
+    // app.use(express.static('../../local-package/build'))
+    app.use((0, http_proxy_middleware_1.createProxyMiddleware)('', {
+        target: 'http://localhost:3000/react-typescript-jbookApp',
         ws: true,
-        logLevel: 'silent',
+        logLevel: 'debug',
+        changeOrigin: true,
     }));
     return new Promise((resolve, reject) => {
         app.listen(port, resolve).on('error', reject);

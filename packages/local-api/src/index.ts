@@ -3,11 +3,13 @@ import { createProxyMiddleware } from 'http-proxy-middleware'
 export const serve = (port: number, filename: string, dir: string) => {
   const app = express()
 
+  // app.use(express.static('../../local-package/build'))
   app.use(
-    createProxyMiddleware('/', {
-      target: 'http://localhost:3000',
+    createProxyMiddleware('', {
+      target: 'http://localhost:3000/react-typescript-jbookApp',
       ws: true,
-      logLevel: 'silent',
+      logLevel: 'debug',
+      changeOrigin: true,
     }),
   )
 

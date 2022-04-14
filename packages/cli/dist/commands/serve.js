@@ -19,7 +19,7 @@ const path_1 = __importDefault(require("path"));
 exports.serveCommand = new commander_1.Command()
     .command('serve [filename]')
     .description('Open a file for editing')
-    .option('-p, --port <number>', 'port to run serve on', '5000')
+    .option('-p, --port <number>', 'port to run serve on', '4000')
     .action((filename = 'notebook.js', options) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const dir = path_1.default.join(process.cwd(), path_1.default.dirname(filename));
@@ -27,11 +27,10 @@ exports.serveCommand = new commander_1.Command()
         console.log(`Server started on https://localhost:${options.port}`);
     }
     catch (err) {
-        if (err.code === 'EADDRINUSE') {
-            console.log(`Port ${options.port} is already in use`);
-        }
-        else {
-            console.log('Here is the error: ', err.message);
-        }
+        // if (err.code === 'EADDRINUSE') {
+        //   console.log(`Port ${options.port} is already in use`)
+        // } else {
+        //   console.log('Here is the error: ', err.message)
+        // }
     }
 }));
