@@ -1,2 +1,0 @@
-(this["webpackJsonpreact-typescript-jbookapp"]=this["webpackJsonpreact-typescript-jbookapp"]||[]).push([[155],{325:function(t,p){Prism.languages.gcode={comment:/;.*|\B\(.*?\)\B/,string:{pattern:/"(?:""|[^"])*"/,greedy:!0},keyword:/\b[GM]\d+(?:\.\d+)?\b/,property:/\b[A-Z]/,checksum:{pattern:/\*\d+/,alias:"punctuation"},punctuation:/:/}}}]);
-//# sourceMappingURL=155.89f53abe.chunk.js.map

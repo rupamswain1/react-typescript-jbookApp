@@ -1,0 +1,2 @@
+(this["webpackJsonplocal-package"]=this["webpackJsonplocal-package"]||[]).push([[188],{357:function(a,e){Prism.languages.hsts={directive:{pattern:/\b(?:max-age=|includeSubDomains|preload)/,alias:"keyword"},safe:{pattern:/\b\d{8,}\b/,alias:"selector"},unsafe:{pattern:/\b\d{1,7}\b/,alias:"function"}}}}]);
+//# sourceMappingURL=188.47169c8d.chunk.js.map

@@ -1,0 +1,2 @@
+(this["webpackJsonplocal-package"]=this["webpackJsonplocal-package"]||[]).push([[154],{323:function(a,e){Prism.languages.gcode={comment:/;.*|\B\(.*?\)\B/,string:{pattern:/"(?:""|[^"])*"/,greedy:!0},keyword:/\b[GM]\d+(?:\.\d+)?\b/,property:/\b[A-Z]/,checksum:{pattern:/\*\d+/,alias:"punctuation"},punctuation:/:/}}}]);
+//# sourceMappingURL=154.cd912398.chunk.js.map
