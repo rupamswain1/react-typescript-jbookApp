@@ -16,6 +16,7 @@ exports.serveCommand = void 0;
 const commander_1 = require("commander");
 const local_api_1 = require("local-api");
 const path_1 = __importDefault(require("path"));
+const isProduction = process.env.NODE_ENV === 'production';
 exports.serveCommand = new commander_1.Command()
     .command('serve [filename]')
     .description('Open a file for editing')
@@ -23,14 +24,15 @@ exports.serveCommand = new commander_1.Command()
     .action((filename = 'notebook.js', options) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const dir = path_1.default.join(process.cwd(), path_1.default.dirname(filename));
-        yield (0, local_api_1.serve)(parseInt(options.port), path_1.default.basename(filename), dir);
+        yield (0, local_api_1.serve)(parseInt(options.port), path_1.default.basename(filename), dir, !isProduction);
         console.log(`Server started on https://localhost:${options.port}`);
     }
     catch (err) {
-        // if (err.code === 'EADDRINUSE') {
-        //   console.log(`Port ${options.port} is already in use`)
-        // } else {
-        //   console.log('Here is the error: ', err.message)
-        // }
+        if (err.code === 'EADDRINUSE') {
+            console.log(`Port ${options.port} is already in use`);
+        }
+        else {
+            console.log('Here is the error: ', err.message);
+        }
     }
 }));

@@ -18,6 +18,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
   
   return (
     <>
+
       <ActionBar id={cell.id} />
       <Resizable direction="vertical">
         <div className="codeCell-container">
