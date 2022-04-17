@@ -1,6 +1,8 @@
 import { ActionType } from '../action-types'
 import { Dispatch } from 'redux'
 import { Action } from '../actions'
+import { Cell } from '../cell'
+import axios from 'axios'
 import {
   MoveCellAction,
   DeleteCellAction,
@@ -9,10 +11,14 @@ import {
   Direction,
   BundleCompleteAction,
   BundleStartAction,
+  FetchCellsAction,
+  FetchCellsCompleteAction,
+  FetchCellsErrorAction,
 } from '../actions'
 import { CellType } from '../cell'
 
 import bundle from '../../bundler'
+import { RootState } from '../reducers'
 
 export const updateCell = (id: string, content: string): UpdateCellAction => {
   return {
@@ -82,10 +88,57 @@ export const bundleComplete = (
   }
 }
 
+export const fetchCells = (): FetchCellsAction => {
+  return { type: ActionType.FETCH_CELLS }
+}
+
+export const fetchCellsComplete = (cells: Cell[]): FetchCellsCompleteAction => {
+  return {
+    type: ActionType.FETCH_CELLS_COMPLETE,
+    payload: cells,
+  }
+}
+
+export const fetchCellsError = (err: string): FetchCellsErrorAction => {
+  return {
+    type: ActionType.FETCH_CELLS_ERROR,
+    payload: err,
+  }
+}
+
 export const createBundle = (cellId: string, input: string) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch(bundleStart(cellId))
     const result = await bundle(input)
     dispatch(bundleComplete(cellId, result))
+  }
+}
+
+export const fetchCellsFromApi = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch(fetchCells())
+    try {
+      const { data }: { data: Cell[] } = await axios.get('/cells')
+      dispatch(fetchCellsComplete(data))
+    } catch (err) {
+      dispatch(fetchCellsError(err.message))
+    }
+  }
+}
+
+export const saveCells = () => {
+  return async (dispatch: Dispatch<Action>, getState: () => RootState) => {
+    const {
+      cells: { data, order },
+    } = getState()
+    const cells = order.map((id) => data.id)
+    try {
+      await axios.post('/cells', { cells })
+    } catch (err) {
+      dispatch({
+        type: ActionType.SAVE_CELLS_ERROR,
+        payload: err.message,
+      })
+    }
   }
 }
