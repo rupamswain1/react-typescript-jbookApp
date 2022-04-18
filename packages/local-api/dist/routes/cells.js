@@ -19,12 +19,13 @@ const path_1 = __importDefault(require("path"));
 const createCellRouter = (filename, dir) => {
     const router = express_1.default.Router();
     router.use(express_1.default.json());
-    const fullPath = path_1.default.join('dir', filename);
+    const fullPath = path_1.default.join(dir, filename);
     router.get('/cells', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             //read the file
+            console.log(fullPath);
             const result = yield promises_1.default.readFile(fullPath, { encoding: 'utf-8' });
-            res.send(JSON.parse(result));
+            return res.send(JSON.parse(result));
         }
         catch (err) {
             if (err.code) {
@@ -42,6 +43,8 @@ const createCellRouter = (filename, dir) => {
         //take the list of cells, serialize them
         yield promises_1.default.writeFile(fullPath, JSON.stringify(cells), 'utf-8');
         //wirte the cells into the file
+        res.status(201);
+        res.send('created');
     }));
     return router;
 };

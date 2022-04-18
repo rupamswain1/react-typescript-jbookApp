@@ -121,7 +121,9 @@ export const fetchCellsFromApi = () => {
       const { data }: { data: Cell[] } = await axios.get('/cells')
       dispatch(fetchCellsComplete(data))
     } catch (err) {
-      dispatch(fetchCellsError(err.message))
+      let errMsg = ''
+      if (err instanceof Error) errMsg = err.message
+      dispatch(fetchCellsError(errMsg))
     }
   }
 }
@@ -131,13 +133,18 @@ export const saveCells = () => {
     const {
       cells: { data, order },
     } = getState()
-    const cells = order.map((id) => data.id)
+
+    const cells = order.map((id) => data[id])
+    console.log(cells)
     try {
       await axios.post('/cells', { cells })
     } catch (err) {
+      let errMsg = ''
+      if (err instanceof Error) errMsg = err.message
+
       dispatch({
         type: ActionType.SAVE_CELLS_ERROR,
-        payload: err.message,
+        payload: errMsg,
       })
     }
   }

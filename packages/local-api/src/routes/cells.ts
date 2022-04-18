@@ -12,12 +12,13 @@ interface Cell {
 export const createCellRouter = (filename: string, dir: string) => {
   const router = express.Router()
   router.use(express.json())
-  const fullPath = path.join('dir', filename)
+  const fullPath = path.join(dir, filename)
   router.get('/cells', async (req, res) => {
     try {
       //read the file
+      console.log(fullPath)
       const result = await fs.readFile(fullPath, { encoding: 'utf-8' })
-      res.send(JSON.parse(result))
+      return res.send(JSON.parse(result))
     } catch (err) {
       if (err.code) {
         await fs.writeFile(fullPath, '[]', 'utf-8')
@@ -32,8 +33,11 @@ export const createCellRouter = (filename: string, dir: string) => {
     //make sure the file exists
     //if not create a file
     //take the list of cells, serialize them
+
     await fs.writeFile(fullPath, JSON.stringify(cells), 'utf-8')
     //wirte the cells into the file
+    res.status(201)
+    res.send('created')
   })
 
   return router

@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useTypedSelector } from '../../hooks/use-typed-selector';
 import CellListItems from '../cellListItems/CellListItems';
 import AddCell from '../addCell/AddCell';
+import { useActions } from '../../hooks/use-actions';
 
 import './cell-list.scss'
 
@@ -11,6 +12,13 @@ const CellList: React.FC = () => {
       return data[id];
     });
   });
+
+  const { fetchCellsFromApi } = useActions();
+
+  useEffect(() => {
+    fetchCellsFromApi();
+  }, [])
+
   const renderedCells = cells.map((cell) => {
     return (
       <Fragment key={cell.id}>

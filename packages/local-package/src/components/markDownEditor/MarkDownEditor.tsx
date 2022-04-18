@@ -17,6 +17,7 @@ const MarkDownEditor: React.FC<MarkDownEditorProps> = ({
   const [enableEditor, setEnableEditor] = useState<boolean>(false);
   const { updateCell } = useActions();
   const mdEditorRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     const listen = (event: MouseEvent) => {
       //Check if the click is inside the editor or not
@@ -42,6 +43,7 @@ const MarkDownEditor: React.FC<MarkDownEditorProps> = ({
       <ActionBar id={id} />
       {enableEditor ? (
         <div ref={mdEditorRef} className="text-editor">
+
           <MDEditor
             value={content}
             onChange={(event) => updateCell(id, event || 'Enter Text Here!!')}

@@ -41,6 +41,7 @@ const CellReducer = produce(
         return state
       case ActionType.UPDATE_CELL:
         const { id, content } = action.payload
+        console.log(id, content)
         state.data[id].content = content
         return state
 
