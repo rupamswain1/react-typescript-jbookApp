@@ -1,11 +1,11 @@
 {
   "name": "@react-jbook-udemy/local-api",
   "version": "1.0.0",
-  "files":[
+  "files": [
     "dist"
   ],
   "publishConfig": {
-    "access":"public"
+    "access": "public"
   },
   "description": "",
   "main": "dist/index.js",
@@ -26,6 +26,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "http-proxy-middleware": "^2.0.4",
-    "local-package": "^0.1.0"
+    "local-package": "^1.0.0"
   }
 }
