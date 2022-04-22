@@ -1,2 +1,0 @@
-(this["webpackJsonp@react-jbook-udemy/local-package"]=this["webpackJsonp@react-jbook-udemy/local-package"]||[]).push([[356],{525:function(a,t){Prism.languages.properties={comment:/^[ \t]*[#!].*$/m,"attr-value":{pattern:/(^[ \t]*(?:\\(?:\r\n|[\s\S])|[^\\\s:=])+(?: *[=:] *(?! )| ))(?:\\(?:\r\n|[\s\S])|[^\\\r\n])+/m,lookbehind:!0},"attr-name":/^[ \t]*(?:\\(?:\r\n|[\s\S])|[^\\\s:=])+(?= *[=:]| )/m,punctuation:/[=:]/}}}]);
-//# sourceMappingURL=356.86f28503.chunk.js.map

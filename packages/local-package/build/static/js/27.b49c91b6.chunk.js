@@ -1,2 +1,0 @@
-(this["webpackJsonp@react-jbook-udemy/local-package"]=this["webpackJsonp@react-jbook-udemy/local-package"]||[]).push([[27],{196:function(a,e){Prism.languages.arff={comment:/%.*/,string:{pattern:/(["'])(?:\\.|(?!\1)[^\\\r\n])*\1/,greedy:!0},keyword:/@(?:attribute|data|end|relation)\b/i,number:/\b\d+(?:\.\d+)?\b/,punctuation:/[{},]/}}}]);
-//# sourceMappingURL=27.b49c91b6.chunk.js.map

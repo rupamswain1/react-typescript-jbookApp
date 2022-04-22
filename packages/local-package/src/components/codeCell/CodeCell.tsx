@@ -32,7 +32,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
                     <h1>This is an example of react component</h1>
                   </div>
                 )
-              }
+              };
               show(<Hello/>)'
               cell={cell}
             />

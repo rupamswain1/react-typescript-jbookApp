@@ -22,19 +22,19 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   cell: { id, content },
 }) => {
   const editorRef = useRef<any>();
-  const cumilativeCode=useCumilativeCode(id)
-  
-  const { updateCell,createBundle } = useActions();
+  const cumilativeCode = useCumilativeCode(id)
+
+  const { updateCell, createBundle } = useActions();
   useEffect(() => {
 
     const bundleTimer = setTimeout(async () => {
-      createBundle(id,cumilativeCode)
+      createBundle(id, cumilativeCode)
     }, 750);
 
     return () => {
       clearTimeout(bundleTimer);
     };
-  }, [cumilativeCode,id,createBundle]);
+  }, [cumilativeCode, id, createBundle]);
 
   const onEditorDidMount: EditorDidMount = (getValue, monacoEditor) => {
     editorRef.current = monacoEditor;
@@ -51,14 +51,15 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
       monacoEditor
     );
     highlighter.highLightOnDidChangeModelContent(
-      () => {},
-      () => {},
+      () => { },
+      () => { },
       undefined,
-      () => {}
+      () => { }
     );
   };
 
   const formatCode = () => {
+
     const unformatted = editorRef.current.getModel().getValue();
     const formatted = prettier
       .format(unformatted, {
@@ -69,7 +70,9 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
         singleQuote: true,
       })
       .replace(/\n$/, '');
+
     editorRef.current.setValue(formatted);
+
   };
   return (
     <div className="codeEditor">
