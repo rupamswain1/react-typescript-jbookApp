@@ -41,7 +41,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
             !bundle || bundle.loading ? (
               <div className='loader-container'>
                 <div className="loader"></div>
-              </div>
+              </div> 
             ) :
 
               <CodeOutput code={bundle.code} err={bundle.err} />
