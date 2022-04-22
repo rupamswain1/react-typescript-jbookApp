@@ -14,8 +14,8 @@ interface CodeCellProps {
 }
 
 const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
-  const bundle=useTypedSelector((state)=>state.bundle[cell.id])
-  
+  const bundle = useTypedSelector((state) => state.bundle[cell.id])
+
   return (
     <>
 
@@ -24,18 +24,27 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
         <div className="codeCell-container">
           <Resizable direction="horizontal">
             <CodeEditor
-              initialValue='const h="hello"; console.log(h)'
+              initialValue='//Below is an example of react component
+
+              const Hello=()=>{
+                return(
+                  <div>
+                    <h1>Hello</h1>
+                  </div>
+                )
+              }
+              show(<Hello/>)'
               cell={cell}
             />
           </Resizable>
           {
-            !bundle ||bundle.loading?(
+            !bundle || bundle.loading ? (
               <div className='loader-container'>
                 <div className="loader"></div>
               </div>
-            ):
-           
-            <CodeOutput code={bundle.code} err={bundle.err}/>
+            ) :
+
+              <CodeOutput code={bundle.code} err={bundle.err} />
           }
           {/* {bundle && } */}
         </div>
