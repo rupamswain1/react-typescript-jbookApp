@@ -20,7 +20,7 @@
     "@react-jbook-udemy/local-package": "^1.0.0"
   },
   "devDependencies": {
-    "@react-jbook-udemy/local-api": "^1.0.2",
+    "@react-jbook-udemy/local-api": "^1.0.3",
     "@types/node": "^17.0.23",
     "commander": "^9.1.0",
     "esbuild": "0.8.26",
