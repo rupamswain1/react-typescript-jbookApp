@@ -1,9 +1,9 @@
 {
   "name": "local-package",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "files": [
-    "build" 
+    "build"
   ],
   "publishConfig": {
     "access": "public"
