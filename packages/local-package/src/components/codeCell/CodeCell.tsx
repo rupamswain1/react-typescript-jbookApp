@@ -24,12 +24,12 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
         <div className="codeCell-container">
           <Resizable direction="horizontal">
             <CodeEditor
-              initialValue='//Below is an example of react component
+              initialValue='
 
               const Hello=()=>{
                 return(
                   <div>
-                    <h1>Hello</h1>
+                    <h1>This is an example of react component</h1>
                   </div>
                 )
               }
