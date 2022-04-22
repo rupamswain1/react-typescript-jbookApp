@@ -1,6 +1,6 @@
 {
   "name": "react-jbook-udemy",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -17,10 +17,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@react-jbook-udemy/local-package": "^1.0.6"
+    "@react-jbook-udemy/local-package": "^1.0.8"
   },
   "devDependencies": {
-    "@react-jbook-udemy/local-api": "^1.0.7",
+    "@react-jbook-udemy/local-api": "^1.0.8",
     "@types/node": "^17.0.23",
     "commander": "^9.1.0",
     "esbuild": "0.8.26",
