@@ -1,0 +1,2 @@
+(this["webpackJsonp@react-jbook-udemy/local-package"]=this["webpackJsonp@react-jbook-udemy/local-package"]||[]).push([[239],{408:function(a,n){Prism.languages.jsonp=Prism.languages.extend("json",{punctuation:/[{}[\]();,.]/}),Prism.languages.insertBefore("jsonp","punctuation",{function:/(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*\()/})}}]);
+//# sourceMappingURL=239.6b1240cf.chunk.js.map
