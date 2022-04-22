@@ -1,5 +1,5 @@
 {
-  "name": "local-package",
+  "name": "@react-jbook-udemy/local-package",
   "version": "1.0.4",
   "private": false,
   "files": [
@@ -70,5 +70,5 @@
       "last 1 safari version"
     ]
   },
-  "gitHead": "6a3aef73409c1de72cd3938104a2cb98632dbf09"
+  "gitHead": "69b76ac305e9ebabfe01b48ec00205cd742f6597"
 }
