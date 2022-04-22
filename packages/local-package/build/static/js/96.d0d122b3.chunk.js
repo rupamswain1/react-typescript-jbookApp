@@ -1,2 +1,0 @@
-(this["webpackJsonplocal-package"]=this["webpackJsonplocal-package"]||[]).push([[96],{265:function(a,c){Prism.languages.csv={value:/[^\r\n,"]+|"(?:[^"]|"")*"(?!")/,punctuation:/,/}}}]);
-//# sourceMappingURL=96.d0d122b3.chunk.js.map

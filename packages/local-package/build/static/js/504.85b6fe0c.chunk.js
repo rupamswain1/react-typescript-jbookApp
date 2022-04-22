@@ -1,0 +1,2 @@
+(this["webpackJsonp@react-jbook-udemy/local-package"]=this["webpackJsonp@react-jbook-udemy/local-package"]||[]).push([[504],{673:function(a,e){!function(a){function e(e,n){a.languages[e]&&a.languages.insertBefore(e,"comment",{"doc-comment":n})}var n=a.languages.markup.tag,t={pattern:/\/\/\/.*/,greedy:!0,alias:"comment",inside:{tag:n}},c={pattern:/'''.*/,greedy:!0,alias:"comment",inside:{tag:n}};e("csharp",t),e("fsharp",t),e("vbnet",c)}(Prism)}}]);
+//# sourceMappingURL=504.85b6fe0c.chunk.js.map
