@@ -1,2 +1,0 @@
-(this["webpackJsonp@react-jbook-udemy/local-package"]=this["webpackJsonp@react-jbook-udemy/local-package"]||[]).push([[463],{632:function(a,e){!function(a){var e=a.util.clone(a.languages.typescript);a.languages.tsx=a.languages.extend("jsx",e);var t=a.languages.tsx.tag;t.pattern=RegExp("(^|[^\\w$]|(?=</))(?:"+t.pattern.source+")",t.pattern.flags),t.lookbehind=!0}(Prism)}}]);
-//# sourceMappingURL=463.ca18b193.chunk.js.map
