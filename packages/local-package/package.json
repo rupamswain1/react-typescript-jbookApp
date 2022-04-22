@@ -1,6 +1,6 @@
 {
   "name": "@react-jbook-udemy/local-package",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "private": false,
   "files": [
     "build"
