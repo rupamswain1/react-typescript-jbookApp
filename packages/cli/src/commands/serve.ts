@@ -19,10 +19,11 @@ export const serveCommand = new Command()
       )
       console.log(`Server started on https://localhost:${options.port}`)
     } catch (err) {
-      if (err.code === 'EADDRINUSE') {
+      const e: any = err
+      if (e.code === 'EADDRINUSE') {
         console.log(`Port ${options.port} is already in use`)
       } else {
-        console.log('Here is the error: ', err.message)
+        console.log('Here is the error: ', e.message)
       }
     }
   })
